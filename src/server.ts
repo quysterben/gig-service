@@ -14,6 +14,7 @@ import { checkConnection, createIndex } from '@gig/elasticsearch';
 import { appRoutes } from '@gig/routes';
 import { Channel } from 'amqplib';
 import { createConnection } from '@gig/queues/connection';
+import { consumeGigDirectMessage, consumeSeedGigDirectMessage } from '@gig/queues/gig.consumer';
 
 const SERVER_PORT = 4004;
 const log: Logger = winstonLogger(`${config.ELASTIC_SEARCH_URL}`, 'gigServer', 'debug');
@@ -62,6 +63,8 @@ const routesMiddleware = (app: Application): void => {
 
 const startQueues = async (): Promise<void> => {
   gigChannel = (await createConnection()) as Channel;
+  await consumeGigDirectMessage(gigChannel);
+  await consumeSeedGigDirectMessage(gigChannel);
 };
 
 const startElasticSearch = (): void => {
