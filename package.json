@@ -1,7 +1,8 @@
 {
   "name": "gig-service",
   "version": "1.0.0",
-  "main": "app.js","scripts": {
+  "main": "app.js",
+  "scripts": {
     "start": "pm2 start ./build/src/app.js -i 5 --attach --watch | pino-pretty -c",
     "stop": "pm2 stop all",
     "delete": "pm2 delete all",
@@ -39,6 +40,7 @@
     "mongoose": "^8.5.0",
     "mysql2": "^3.10.2",
     "pino-pretty": "^11.2.1",
+    "redis": "^4.6.15",
     "sequelize": "^6.37.3",
     "typescript": "^5.5.3",
     "typescript-transform-paths": "^3.4.7",

@@ -9,7 +9,7 @@ async function createConnection(): Promise<Channel | undefined> {
   try {
     const connection: Connection = await client.connect(`${config.RABBITMQ_ENDPOINT}`);
     const channel: Channel = await connection.createChannel();
-    log.info('Gig server connected to queue successfully...');
+    log.info('GigService connected to queue successfully...');
     closeConnection(channel, connection);
     return channel;
   } catch (error) {

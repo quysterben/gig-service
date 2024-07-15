@@ -85,9 +85,9 @@ const gigErrorHandler = (app: Application): void => {
 const startServer = (app: Application): void => {
   try {
     const httpServer: http.Server = new http.Server(app);
-    log.info(`Gig server has started with process id ${process.pid}`);
+    log.info(`GigService server has started with process id ${process.pid}`);
     httpServer.listen(SERVER_PORT, () => {
-      log.info(`Gig server running on port ${SERVER_PORT}`);
+      log.info(`GigService server running on port ${SERVER_PORT}`);
     });
   } catch (error) {
     log.log('error', 'GigService startServer() method error:', error);
